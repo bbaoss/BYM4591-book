@@ -493,6 +493,10 @@ ROT13, diğer anahtarlara göre özel bir yere sahiptir çünkü ROT13 için hem
 
 Sezar şifresi çok kolaylıkla çözülebilir çünkü 25 farklı anahtar deneyerek sonuca ulaşılabilir (ROT1 -- > ROT25). Terminalde bunun güzel bir örneği [bu sayfada](https://sandilands.info/sgordon/classical-ciphers-frequency-analysis-examples) gösterilmiştir. [Decrypting Text](http://www.richkni.co.uk/php/crypta/caesar.php) adlı websayfasında, kutuya yazılan yazı 25 farklı kaydırma ile denenip deşifre edilmektedir. Harfleri rastgele karıştırmak mümkün olsa da, sırası unutulmayacak bir karıştırma daha çok tercih edilmektedir. Bunun için kullanılan yöntemlerden biri, anahtar kelime  kullanmaktır. Aşağıdaki eşleşme tablosu `LINUX` kelimesi kullanılarak oluşturulmuştur. Anahtar kelime ilk önce yazılmış ardından da anahtar kelimede olmayan harfler sırasıyla yazılmıştır. "Y" ve "Z" harflerinin yerleri değiştirilmiştir çünkü **eşleşme tablosunda hiçbir harf kendiyle eşleşmemelidir**.
 
+ROT komutu rotation komutundan gelmektedir yani alfabedeki harfleri, onlardan sonra gelen harflere dönüştürmeyi sağlar. ROT ile şifreleme yapılırken echo ve tr komutları sık sık kullanılır. 
+Örneğin "ProjectX" kelimesini ROT1 ile kodlamak istersek komut kısmına " echo ProjectX | tr a-zA-Z  b-za-aB-ZA-A " yazmamız yeterli olacaktır. ProjectX kelimesinin ROT1 ile şifrelenmiş hali "QspkfduY" tir. "QspkfduY" şifresini tekrar geri çözmek ister isek komut kısmına " echo QspkfduY | tr b-za-aB-ZA-A  a-zA-Z " yazmamız gerekir. 
+"ProjectX" kelimesini ROT2 ile şifrelemek istersek de bu sefer "e cho ProjectX | a-zA-Z  c-za-bC-ZA-B " yazmamız gereklidir. ROT3 ile kodlamak istersek de " echo 'kelime' | tr a-zA-Z  d-za-cD-ZA-C " yazılır. Harfleri kaç harf kaydırmak istersek ona göre her seferinde düzenleme yapılabilir.
+
 ```
 Input   ABCDEFGHIJKLMNOPQRSTUVWXYZ
 Output  LINUXABCDEFGHJKMOPQRSTVWZY
